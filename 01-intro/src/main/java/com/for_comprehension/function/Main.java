@@ -1,0 +1,18 @@
+package com.for_comprehension.function;
+
+/**
+ * - FP vs OOP
+ * - monads
+ * - call by value vs call by name
+ * - persistent collections
+ * - intersection types
+ * - algebraic data types
+ * - stream bugs
+ * - optional vs null
+ * - parallel streams
+ */
+class Main {
+
+    public static void main(String[] args) {
+    }
+}
