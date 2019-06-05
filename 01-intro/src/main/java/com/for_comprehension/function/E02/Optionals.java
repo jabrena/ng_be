@@ -70,8 +70,7 @@ class Optionals {
     /**
      * Get {@link Person#name}, uppercase it,
      * if empty string, treat as absent
-     * or else return a default value (just live above)
-     * and then find age by calling {@link this#findAgeByName(String)}
+     * find age by calling {@link this#findAgeByName(String)}
      * Hint: {@link Optional#flatMap(Function)}
      */
     static Function<Integer, Integer> L6_nestedOptionals() {

@@ -59,6 +59,10 @@ public class OptionalsTest {
     public void l6_processNestedOptionals() {
         assertThat(Optionals.L6_nestedOptionals().apply(42))
           .isEqualTo(Optionals.Person.ANDRE.name.toUpperCase().hashCode() % 80);
+
+
+        assertThat(Optionals.L6_nestedOptionals().apply(43))
+          .isEqualTo(42);
     }
 
     private static void sleep() {
