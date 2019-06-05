@@ -19,6 +19,9 @@ final class FunctionalInterfaces {
      */
     static Supplier<Integer> L1_toConstant() {
         return () -> {
+
+
+
             throw new NotImplementedException();
         };
     }
@@ -28,6 +31,9 @@ final class FunctionalInterfaces {
      */
     static Function<String, String> L2_toUpperCase() {
         return s -> {
+
+
+
             throw new NotImplementedException();
         };
     }
@@ -37,6 +43,8 @@ final class FunctionalInterfaces {
      */
     static Function<String, Long> L3_toLong() {
         return s -> {
+
+
             throw new NotImplementedException();
         };
     }
@@ -46,6 +54,9 @@ final class FunctionalInterfaces {
      */
     static IntPredicate L4_to42IntegerPredicate() {
         return i -> {
+
+
+
             throw new NotImplementedException();
         };
     }
@@ -55,6 +66,9 @@ final class FunctionalInterfaces {
      */
     static Function<Integer, Predicate<Integer>> L5_toIntegerPredicate() {
         return i -> {
+
+
+
             throw new NotImplementedException();
         };
     }
@@ -64,6 +78,8 @@ final class FunctionalInterfaces {
      */
     static Function<String, URI> L6_toURI() {
         return str -> {
+
+
             throw new NotImplementedException();
         };
     }
@@ -73,6 +89,9 @@ final class FunctionalInterfaces {
      */
     static <T> Function<Supplier<T>, Callable<T>> L7_toCallable() {
         return s -> {
+
+
+
             throw new NotImplementedException();
         };
     }
