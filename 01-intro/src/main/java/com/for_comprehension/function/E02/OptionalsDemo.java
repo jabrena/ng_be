@@ -2,12 +2,19 @@ package com.for_comprehension.function.E02;
 
 import com.for_comprehension.function.misc.User;
 
+import java.util.Arrays;
+import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.*;
+import static java.util.stream.Collectors.groupingBy;
 
 class OptionalsDemo {
 
     public static void main(String[] args) {
-
 
         String result = findById(23)
           .map(User::getName)
@@ -49,7 +56,12 @@ class OptionalsDemo {
         findById(23)
           .map(User::getName)
           .map(s -> s.toUpperCase())
-          .ifPresent(System.out::println);
+          .ifPresent(System.out::println);  // IDIOMATIC
+
+
+
+        findById(23)
+          .flatMap(u -> findAddress(u.getId()));
     }
 
 
