@@ -1,6 +1,6 @@
 package com.for_comprehension.function.E01;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+import com.for_comprehension.function.misc.NotImplementedException;
 
 import java.net.URI;
 import java.util.concurrent.Callable;
@@ -25,12 +25,7 @@ final class FunctionalInterfaces {
      * @return a function that takes an input String and returns its uppercased version
      */
     static Function<String, String> L2_toUpperCase() {
-        return s -> {
-
-
-
-            throw new NotImplementedException();
-        };
+        return String::toUpperCase;
     }
 
     /**
@@ -60,12 +55,7 @@ final class FunctionalInterfaces {
      * @return a higher-order function that takes an integer and returns a predicate validating if the input is bigger than the provided value
      */
     static Function<Integer, Predicate<Integer>> L5_toIntegerPredicate() {
-        return i -> {
-
-
-
-            throw new NotImplementedException();
-        };
+        return input -> (param -> param > input);
     }
 
     /**

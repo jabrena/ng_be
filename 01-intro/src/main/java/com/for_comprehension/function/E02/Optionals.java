@@ -2,7 +2,7 @@ package com.for_comprehension.function.E02;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+import com.for_comprehension.function.misc.NotImplementedException;
 
 import java.util.NoSuchElementException;
 import java.util.Optional;

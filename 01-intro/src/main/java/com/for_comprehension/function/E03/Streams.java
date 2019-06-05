@@ -1,6 +1,6 @@
 package com.for_comprehension.function.E03;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+import com.for_comprehension.function.misc.NotImplementedException;
 
 import java.time.LocalDate;
 import java.util.Collection;

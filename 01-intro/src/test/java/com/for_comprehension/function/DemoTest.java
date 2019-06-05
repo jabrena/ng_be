@@ -70,17 +70,24 @@ public class DemoTest {
 
     @Test
     public void example_8() throws Exception {
-            Supplier<Integer> costlyInteger = () -> {
-                try {
-                    System.out.println("calculating...");
-                    Thread.sleep(10000);
-                } catch (InterruptedException e) {
-                    //e.printStackTrace();
-                }
-                return 42;
-            };
+        Supplier<Integer> costlyInteger = () -> {
+            try {
+                System.out.println("calculating...");
+                Thread.sleep(10000);
+            } catch (InterruptedException e) {
+                //e.printStackTrace();
+            }
+            return 42;
+        };
 
-            costlyInteger.get();
+        costlyInteger.get();
     }
 
+    @Test
+    public void example_9() throws Exception {
+
+        Predicate<Integer> isEven = integer -> integer % 2 == 0;
+
+        isEven.test(42);
+    }
 }

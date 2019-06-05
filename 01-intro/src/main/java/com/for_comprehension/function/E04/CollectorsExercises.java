@@ -1,6 +1,6 @@
 package com.for_comprehension.function.E04;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+import com.for_comprehension.function.misc.NotImplementedException;
 
 import java.util.Collections;
 import java.util.LinkedList;

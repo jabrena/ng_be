@@ -2,7 +2,7 @@ package com.for_comprehension.function.E06;
 
 import com.for_comprehension.function.misc.User;
 import com.for_comprehension.function.misc.UsersClient;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+import com.for_comprehension.function.misc.NotImplementedException;
 
 import java.util.Arrays;
 import java.util.List;
