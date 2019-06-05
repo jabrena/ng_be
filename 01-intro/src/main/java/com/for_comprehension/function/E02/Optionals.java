@@ -23,9 +23,7 @@ class Optionals {
      * WARNING: this is an anti-pattern (unless you know what you're doing)
      */
     static Function<Integer, Person> L1_bruteForceGet() {
-        return id -> {
-            throw new NotImplementedException();
-        };
+        return id -> findOneById(id).get();
     }
 
     /**
