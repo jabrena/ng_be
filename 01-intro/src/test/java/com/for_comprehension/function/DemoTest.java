@@ -53,14 +53,14 @@ public class DemoTest {
 
     @Test
     public void example_6() throws Exception {
-         BinaryOperator<Integer> adder = Integer::sum;
-         BinaryOperator<Integer> biggerOne = (i1, i2) -> {
-             if (i1 > i2) {
-                 return i1;
-             } else {
-                 return i2;
-             }
-         };
+        BinaryOperator<Integer> adder = Integer::sum;
+        BinaryOperator<Integer> biggerOne = (i1, i2) -> {
+            if (i1 > i2) {
+                return i1;
+            } else {
+                return i2;
+            }
+        };
     }
 
     @Test
@@ -68,14 +68,19 @@ public class DemoTest {
         UnaryOperator<Integer> seq = i -> i + 1; // Function<Integer, Integer>
     }
 
+    @Test
+    public void example_8() throws Exception {
+            Supplier<Integer> costlyInteger = () -> {
+                try {
+                    System.out.println("calculating...");
+                    Thread.sleep(10000);
+                } catch (InterruptedException e) {
+                    //e.printStackTrace();
+                }
+                return 42;
+            };
 
-
-
-
-
-
-
-
-
+            costlyInteger.get();
+    }
 
 }

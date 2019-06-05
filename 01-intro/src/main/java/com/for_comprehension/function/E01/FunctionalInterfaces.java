@@ -18,12 +18,7 @@ final class FunctionalInterfaces {
      * @return a constant supplier returning 42
      */
     static Supplier<Integer> L1_toConstant() {
-        return () -> {
-
-
-
-            throw new NotImplementedException();
-        };
+        return () -> 42;
     }
 
     /**
