@@ -1,7 +1,8 @@
 language: java
 dist: xenial
 
-install: mvn clean install -DskipTests
+install: true
+script: mvn clean install -DskipTests=true
 
 jdk:
   - openjdk8
