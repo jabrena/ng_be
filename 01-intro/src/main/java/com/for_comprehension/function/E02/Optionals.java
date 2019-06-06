@@ -32,50 +32,61 @@ class Optionals {
      *
      */
     static Function<Integer, Person> L2_customException() {
-        return id -> {
-            throw new NotImplementedException();
-        };
+        return id -> findOneById(id).orElseThrow(IllegalStateException::new);
     }
 
     /**
-     * Get {@link Person#name} if found or else return {@link this#DEFAULT}
+     * Get {@link Optionals.Person#name} if found or else return {@link this#DEFAULT}
      */
     static Function<Integer, String> L3_defaultValue() {
         return id -> {
-            throw new NotImplementedException();
+            return findOneById(id)
+              .map(Person::getName)
+              .orElse(DEFAULT);
         };
     }
 
     /**
-     * Get {@link Person#name} if found or else return the value returned by provided method (represented by Supplier<String)
+     * Get {@link Optionals.Person#name} if found or else return the value returned by provided method (represented by Supplier<String)
      */
     static BiFunction<Integer, Supplier<String>, String> L4_defaultValueMethodResult() {
         return (id, function) -> {
-            throw new NotImplementedException();
+            return findOneById(id)
+              .map(Person::getName)
+              .orElseGet(function);
         };
     }
 
     /**
-     * Get {@link Person#name}, uppercase it,
+     * Get {@link Optionals.Person#name}, uppercase it,
      * if empty string, treat as absent
      * or else return a default value
      * Hint: {@link Optional#filter}
      */
     static Function<Integer, String> L5_processValue() {
         return id -> {
-            throw new NotImplementedException();
+            return findOneById(id)
+              .map(Person::getName)
+              .filter(s -> !s.isEmpty())
+              .map(String::toUpperCase)
+              .orElse(DEFAULT);
         };
     }
 
     /**
-     * Get {@link Person#name}, uppercase it,
+     * Get {@link Optionals.Person#name}, uppercase it,
      * if empty string, treat as absent
-     * find age by calling {@link this#findAgeByName(String)}
+     * or else return a default value (just live above)
+     * and then find age by calling {@link this#findAgeByName(String)}
      * Hint: {@link Optional#flatMap(Function)}
      */
     static Function<Integer, Integer> L6_nestedOptionals() {
         return id -> {
-            throw new NotImplementedException();
+            return findOneById(id)
+              .map(Person::getName)
+              .filter(s -> !s.isEmpty())
+              .flatMap(s -> findAgeByName(s))
+              .orElse(42);
         };
     }
 
@@ -100,6 +111,6 @@ class Optionals {
 
     private static Optional<Person> findOneById(int id) {
         log.info("Fetching person for id [{}]", id);
-        return id == 42 ? Optional.of(new Person("Andre")) : Optional.empty();
+        return id == 42 ? Optional.of(new Optionals.Person("Andre")) : Optional.empty();
     }
 }

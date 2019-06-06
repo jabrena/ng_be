@@ -3,7 +3,6 @@ package com.for_comprehension.function.E02;
 import com.for_comprehension.function.misc.User;
 
 import java.util.Optional;
-import java.util.stream.Stream;
 
 class OptionalNullCase {
 
