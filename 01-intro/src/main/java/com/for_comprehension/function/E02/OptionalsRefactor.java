@@ -2,8 +2,32 @@ package com.for_comprehension.function.E02;
 
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.Optional;
 
 class OptionalsRefactor {
+
+    public Person getDefault() {
+        return new Person(
+                "JOHN",
+                40,
+                193,
+                LocalDate.of(2000, Month.NOVEMBER, 1));
+    }
+
+    public Person findPersonWrapper(int id) {
+        return Optional.ofNullable(this.findPerson(id))
+                .orElseGet(() -> getDefault());
+    }
+
+    public String findAddressWrapper(Person person) {
+        return Optional.ofNullable(this.findAddress(person))
+                .orElse("");
+    }
+
+    public String findAddressByIdWrapper(int id) {
+        return Optional.ofNullable(this.findAddressById(id))
+                .orElseGet(() -> "DEFAUL");
+    }
 
     private Person findPerson(int id) {
         switch(id) {
@@ -48,7 +72,7 @@ class OptionalsRefactor {
     // DON"T CHANGE ANYTHING BEYOND THIS POINT
     // ***
 
-    private class Person {
+    public class Person {
         private final String name;
         private final int weight;
         private final int height;

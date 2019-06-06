@@ -23,10 +23,10 @@ class Optionals {
      * WARNING: this is an anti-pattern (unless you know what you're doing)
      */
     static Function<Integer, Person> L1_bruteForceGet() {
-        return id -> {
-            throw new NotImplementedException();
-        };
+        return x -> Optionals.findOneById(x).get();
     }
+
+    //Create an Exception is expensive because it is necessary to create the StackTrace
 
     /**
      * Call {@link this#findOneById } with a provided id and handle absence by throwing {@link IllegalStateException}
@@ -34,9 +34,7 @@ class Optionals {
      *
      */
     static Function<Integer, Person> L2_customException() {
-        return id -> {
-            throw new NotImplementedException();
-        };
+        return x -> Optionals.findOneById(x).orElseThrow(() -> new IllegalStateException(""));
     }
 
     /**
@@ -44,7 +42,18 @@ class Optionals {
      */
     static Function<Integer, String> L3_defaultValue() {
         return id -> {
-            throw new NotImplementedException();
+            return Optionals.findOneById(id)
+                    .map(Person::getName)
+                    .orElse(DEFAULT);
+            /*
+            if(Optionals.findOneById(id).isPresent()) {
+                return Optionals.findOneById(id)
+                        .map(Person::getName)
+                        .get();
+            } else {
+                return DEFAULT;
+            }
+            */
         };
     }
 
@@ -53,7 +62,18 @@ class Optionals {
      */
     static BiFunction<Integer, Supplier<String>, String> L4_defaultValueMethodResult() {
         return (id, function) -> {
-            throw new NotImplementedException();
+            return Optionals.findOneById(id)
+                    .map(Person::getName)
+                    .orElseGet(function);
+            /*
+            if(Optionals.findOneById(id).isPresent()) {
+                return Optionals.findOneById(id)
+                        .map(Person::getName)
+                        .get();
+            }else {
+                return function.get();
+            }
+            */
         };
     }
 
@@ -64,9 +84,10 @@ class Optionals {
      * Hint: {@link Optional#filter}
      */
     static Function<Integer, String> L5_processValue() {
-        return id -> {
-            throw new NotImplementedException();
-        };
+        return id -> Optionals.findOneById(id)
+                .map(Person::getName)
+                .map(String::toUpperCase)
+                .orElse(DEFAULT.toUpperCase());
     }
 
     /**
@@ -77,9 +98,11 @@ class Optionals {
      * Hint: {@link Optional#flatMap(Function)}
      */
     static Function<Integer, Integer> L6_nestedOptionals() {
-        return id -> {
-            throw new NotImplementedException();
-        };
+        return id -> Optionals.findOneById(id)
+                .map(Person::getName)
+                .map(Optionals::findAgeByName)
+                .orElse(Optionals.findAgeByName(DEFAULT))
+                .get();
     }
 
     static class Person {

@@ -1,5 +1,6 @@
 package com.for_comprehension.function.E03;
 
+import java.util.stream.Collectors;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.time.LocalDate;
@@ -26,9 +27,9 @@ class Streams {
      * {@link Stream#map(Function)}
      */
     static Function<List<String>, List<String>> L1_upperCaseAll() {
-        return input -> {
-            throw new NotImplementedException();
-        };
+        return input -> input.stream()
+                .map(String::toUpperCase)
+                .collect(Collectors.toList());
     }
 
     /**
@@ -37,7 +38,9 @@ class Streams {
      */
     static Function<List<String>, List<String>> L2_upperCaseAllAndFilter() {
         return input -> {
-            throw new NotImplementedException();
+            return input.stream()
+                    .filter(x -> x.length() > 6)
+                    .collect(Collectors.toList());
         };
     }
 
