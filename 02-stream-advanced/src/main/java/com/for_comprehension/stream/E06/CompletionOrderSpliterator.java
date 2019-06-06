@@ -12,6 +12,10 @@ import java.util.function.Consumer;
 
 import static java.util.concurrent.CompletableFuture.anyOf;
 
+/**
+ * TODO
+ * implement a custom spliterator returning CompletableFuture instances in completion order
+ */
 final class CompletionOrderSpliterator<T> implements Spliterator<T> {
 
     CompletionOrderSpliterator(Collection<CompletableFuture<T>> futures) {

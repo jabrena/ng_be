@@ -13,6 +13,9 @@ import static java.util.concurrent.CompletableFuture.supplyAsync;
 import static java.util.stream.Collectors.collectingAndThen;
 import static java.util.stream.Collectors.toList;
 
+/**
+ * It's a live-demo - nothing to do here :)
+ */
 class ParallelStream {
 
     static <T, R> List<R> parallelSync(Collection<T> input, Function<T, R> task, ExecutorService executor) {

@@ -17,7 +17,7 @@ public class RandomStreamTest {
     public void shouldReturnRandom() {
         ArrayList<Integer> input = IntStream.range(0, 10).boxed().collect(Collectors.toCollection(ArrayList::new));
 
-        List<Integer> result = StreamSupport.stream(new RandomStream<>(input, Random::new), false)
+        List<Integer> result = RandomStream.randomStream(input)
           .collect(Collectors.toList());
 
         assertThat(result)
