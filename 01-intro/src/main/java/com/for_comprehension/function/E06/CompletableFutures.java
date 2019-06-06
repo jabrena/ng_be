@@ -25,8 +25,8 @@ class CompletableFutures {
      * Complete incoming {@link CompletableFuture} manually with value 42
      */
     static Consumer<CompletableFuture<Integer>> L1_manualCompletion() {
-        return f -> {
-            throw new NotImplementedException();
+        return x -> {
+            x.getNow(1);
         };
     }
 
@@ -101,5 +101,4 @@ class CompletableFutures {
             throw new NotImplementedException();
         };
     }
-
 }

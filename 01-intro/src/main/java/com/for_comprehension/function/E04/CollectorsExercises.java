@@ -3,6 +3,7 @@ package com.for_comprehension.function.E04;
 import com.for_comprehension.function.misc.NotImplementedException;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -24,7 +25,7 @@ class CollectorsExercises {
      */
     static Function<List<String>, List<String>> L1_toList() {
         return list -> {
-            throw new NotImplementedException();
+            return list.stream().collect(Collectors.toList());
         };
     }
 
@@ -33,7 +34,7 @@ class CollectorsExercises {
      */
     static Function<List<String>, LinkedList<String>> L2_toLinkedList() {
         return list -> {
-            throw new NotImplementedException();
+            return list.stream().collect(Collectors.toCollection(LinkedList::new));
         };
     }
 
@@ -42,7 +43,8 @@ class CollectorsExercises {
      */
     static Function<List<String>, List<String>> L3_unmodifiable() {
         return list -> {
-            throw new NotImplementedException();
+            return list.stream().collect(collectingAndThen(toList(),
+                    Collections::unmodifiableList));
         };
     }
 
@@ -52,6 +54,16 @@ class CollectorsExercises {
      */
     static Function<List<String>, Map<String, Integer>> L4_toMap() {
         return list -> {
+            /*
+            return list.stream()
+                    .map(x -> x.toUpperCase())
+                    .map(x -> {
+                        return new HashMap<String, Integer>() {{
+                            put(x, x.length());
+                        }};
+                    })
+                    .collect(Collectors.toList());
+            */
             throw new NotImplementedException();
         };
     }
@@ -84,6 +96,9 @@ class CollectorsExercises {
      */
     static Function<List<String>, Map<Integer, List<String>>> L7_groupStrings() {
         return input -> {
+
+            //input.stream()
+            //        .collect(groupingBy(x -> x.length()), toList());
             throw new NotImplementedException();
         };
     }
