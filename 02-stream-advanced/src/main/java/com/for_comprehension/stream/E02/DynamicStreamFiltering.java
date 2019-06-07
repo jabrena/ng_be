@@ -1,11 +1,14 @@
 package com.for_comprehension.stream.E02;
 
+import java.util.stream.Collector;
 import org.apache.commons.lang3.NotImplementedException;
 
 import java.util.Arrays;
 import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
 import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.toList;
 
 class DynamicStreamFiltering {
 
@@ -16,6 +19,9 @@ class DynamicStreamFiltering {
      */
     @SafeVarargs
     public static <T> UnaryOperator<Stream<T>> filterWith(Predicate<T>... predicates) {
-        throw new NotImplementedException("");
+        return data -> {
+            Predicate<T> reduce = Stream.of(predicates).reduce(w -> true, Predicate::and);
+            return data.filter(reduce);
+        };
     }
 }

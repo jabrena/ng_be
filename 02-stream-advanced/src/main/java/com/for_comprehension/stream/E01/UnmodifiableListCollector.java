@@ -24,7 +24,7 @@ import static java.util.stream.Collectors.toCollection;
 public class UnmodifiableListCollector<T> implements Collector<T, ArrayList<T>, List<T>> {
 
     static <T> Collector<T, ?, List<T>> toUnmodifiableList() {
-        return new UnmodifiableListCollector<>();
+        return null;
     }
 
     /**

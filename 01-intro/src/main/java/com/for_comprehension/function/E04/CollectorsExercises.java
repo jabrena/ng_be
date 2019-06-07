@@ -10,10 +10,12 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.collectingAndThen;
 import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.mapping;
 import static java.util.stream.Collectors.toCollection;
 import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toMap;
@@ -54,17 +56,10 @@ class CollectorsExercises {
      */
     static Function<List<String>, Map<String, Integer>> L4_toMap() {
         return list -> {
-            /*
             return list.stream()
-                    .map(x -> x.toUpperCase())
-                    .map(x -> {
-                        return new HashMap<String, Integer>() {{
-                            put(x, x.length());
-                        }};
-                    })
-                    .collect(Collectors.toList());
-            */
-            throw new NotImplementedException();
+                    .collect(toMap(
+                            s -> s.toUpperCase(),
+                            s -> s.length()));
         };
     }
 
@@ -75,7 +70,13 @@ class CollectorsExercises {
      */
     static Function<List<String>, Map<String, Integer>> L5_toTreeMap() {
         return list -> {
-            throw new NotImplementedException();
+            return list.stream()
+                    .collect(toMap(
+                            s -> s,
+                            String::length,
+                            (oldValue, newValue) -> oldValue,
+                            TreeMap::new));
+
         };
     }
 
@@ -85,7 +86,9 @@ class CollectorsExercises {
      */
     static Function<Map<String, String>, String> L6_toJson() {
         return input -> {
-            throw new NotImplementedException();
+            return input.keySet().stream()
+                    .map(s -> "\"" + s + "\"" + ":" + "\"" + input.get(s) + "\"" )
+                    .collect(Collectors.joining(",", "{", "}"));
         };
     }
 
@@ -96,10 +99,8 @@ class CollectorsExercises {
      */
     static Function<List<String>, Map<Integer, List<String>>> L7_groupStrings() {
         return input -> {
-
-            //input.stream()
-            //        .collect(groupingBy(x -> x.length()), toList());
-            throw new NotImplementedException();
+            return input.stream()
+                    .collect(groupingBy(String::length));
         };
     }
 
@@ -108,7 +109,8 @@ class CollectorsExercises {
      */
     static Function<List<String>, TreeMap<Integer, List<String>>> L8_groupStrings() {
         return input -> {
-            throw new NotImplementedException();
+            return input.stream()
+                    .collect(groupingBy(String::length, TreeMap::new, toList()));
         };
     }
 
@@ -118,7 +120,8 @@ class CollectorsExercises {
      */
     static Function<List<String>, Map<Integer, String>> L9_groupStrings() {
         return input -> {
-            throw new NotImplementedException();
+            return input.stream()
+                    .collect(groupingBy(String::length, mapping(s -> s, joining(","))));
         };
     }
 }
